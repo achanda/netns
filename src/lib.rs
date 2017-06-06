@@ -29,7 +29,7 @@ impl Error for NetNSError {
 impl NetNS {
 	pub fn new() -> Result<NetNS, NetNSError> {
 		unshare(nix::sched::CLONE_NEWNET).expect("failed");
-	    NetNS::get()
+	    	NetNS::get()
 	}
 
 	pub fn get() -> Result<NetNS, NetNSError> {
@@ -46,7 +46,7 @@ impl NetNS {
 
 	fn get_from_path(path: PathBuf) -> Result<NetNS, NetNSError> {
 		let fd = open(&path, nix::fcntl::O_RDONLY, Mode::empty()).expect("Could not open");
-	    return Ok(NetNS {id: fd, path: path})
+	    	return Ok(NetNS {id: fd, path: path})
 	}
 }
 
