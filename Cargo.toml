@@ -8,6 +8,7 @@ repository = "https://github.com/achanda/netns"
 keywords = ["network", "ip", "address"]
 readme = "README.md"
 documentation = "https://docs.rs/netns/"
+categories = ["network-programming", "os"]
 
 [dependencies]
 nix = "0.8.1"
