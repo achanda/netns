@@ -2,6 +2,12 @@
 name = "netns"
 version = "0.1.0"
 authors = ["Abhishek Chanda <abhishek.becs@gmail.com>"]
+description = "A library to work with linux network namespaces"
+license = "Apache-2.0"
+repository = "https://github.com/achanda/netns"
+keywords = ["network", "ip", "address"]
+readme = "README.md"
+documentation = "https://docs.rs/netns/"
 
 [dependencies]
 nix = "0.8.1"
