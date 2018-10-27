@@ -46,12 +46,17 @@ impl NetNS {
         setns(ns.fd, nix::sched::CLONE_NEWNET)
     }
 
-    fn get_from_thread(pid: i32, tid: i32) -> Result<NetNS, NetNSError> {
+    pub fn get_from_thread(pid: i32, tid: i32) -> Result<NetNS, NetNSError> {
         return NetNS::get_from_path(PathBuf::from(format!("/proc/{}/task/{}/ns/net", pid, tid)
             .as_str()));
     }
 
-    fn get_from_path(path: PathBuf) -> Result<NetNS, NetNSError> {
+    pub fn get_from_process(pid: i32) -> Result<NetNS, NetNSError> {
+        return NetNS::get_from_path(PathBuf::from(format!("/proc/{}/ns/net", pid)
+            .as_str()));
+    }
+
+    pub fn get_from_path(path: PathBuf) -> Result<NetNS, NetNSError> {
         let fd = open(&path, nix::fcntl::O_RDONLY, Mode::empty()).expect("Could not open");
         return Ok(NetNS {
             fd: fd,
